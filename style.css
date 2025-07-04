@@ -1,7 +1,7 @@
 /* Общие стили */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Georgia, sans-serif;
     background-color: #e6f7f9;
 }
 
@@ -138,7 +138,7 @@ body {
 }
 
 .heading {
-   font-family: 'Alex Brush', cursive;
+   font-family: 'Georgia', cursive;
     font-size: 30px;
     margin-bottom: 20px;
 }
