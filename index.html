@@ -7,13 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Первая страница -->
+    <div class="page page-1 active">
         <p class="subtitle">ПРИГЛАШЕНИЕ НА СВАДЬБУ</p>
-        <h1 class="names">АРТЕМ <span>&</span> АННА</h1>
-        <button class="invite-button">ОТКРЫТЬ ПРИГЛАШЕНИЕ</button>
+        <h1 class="names">АРТЕМ <span>и</span> АННА</h1>
+        <button class="invite-button" onclick="openInvite()">ОТКРЫТЬ ПРИГЛАШЕНИЕ</button>
         <div class="flowers">
             <img src="images/flowers.png" alt="Цветы">
         </div>
     </div>
+
+    <!-- Вторая страница -->
+    <div class="page page-2">
+        <h2 class="heading">ДОРОГИЕ ГОСТИ!</h2>
+        <p class="text">
+            Приглашаем вас отпраздновать важное событие<br>
+            в нашей жизни – день свадьбы!
+        </p>
+        <h3 class="date">1 ИЮНЯ 2025</h3>
+        <p class="text">Мы будем рады видеть вас<br> в кругу наших гостей!</p>
+        <p class="signature">Артем и Анна</p>
+    </div>
+
+    <script>
+        function openInvite() {
+            document.querySelector('.page-1').classList.remove('active');
+            document.querySelector('.page-2').classList.add('active');
+        }
+    </script>
 </body>
 </html>
