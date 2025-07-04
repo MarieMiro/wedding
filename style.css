@@ -51,10 +51,14 @@ body {
     color: white;
     border: none;
     padding: 15px 30px;
-    border-radius: 5px;
-    margin-top: 40px;
+    border-radius: 30px;
+    font-size: 16px;
     cursor: pointer;
     transition: background 0.3s;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(248, 168, 184, 0.4);
+    margin: 30px auto; /* Центрирование + отступы */
 }
 
 .invite-button:hover {
@@ -131,6 +135,7 @@ body {
 }
 
 .heading {
+    font-family: 'Dancing Script';
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -142,6 +147,7 @@ body {
 }
 
 .date {
+    font-family: 'Dancing Script';
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
