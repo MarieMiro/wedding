@@ -174,12 +174,14 @@ body {
 }
 
 .place-title {
-    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .place-name {
-    font-size: 24px;
+    font-family: 'Alex Brush', cursive;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
@@ -190,7 +192,8 @@ body {
 }
 
 .place-address {
-    font-size: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -205,11 +208,13 @@ body {
 }
 
 .codeword {
+   font-family: 'Playfair Display', serif;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 .password {
+    font-family: 'Alex Brush', cursive;
     font-size: 24px;
     font-weight: bold;
 }
@@ -222,6 +227,7 @@ body {
 }
 
 .timing-title {
+    font-family: 'Alex Brush', cursive;
     font-size: 24px;
     margin-bottom: 40px;
 }
