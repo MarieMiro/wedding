@@ -150,17 +150,17 @@ body {
 }
 
 .date {
-    font-family: 'Alex Brush', cursive;
+    font-family: 'Georgia', cursive;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .signature {
+    font-family: 'Georgia', cursive;
     font-size: 25px;
     color: #e89cae;
-    font-family: 'Cursive', sans-serif;
-}
+   }
 
 /* Третья секция (место проведения) */
 .location-info {
@@ -180,7 +180,7 @@ body {
 }
 
 .place-name {
-    font-family: 'Alex Brush', cursive;
+    font-family: 'Georgia', cursive;
     font-size: 30px;
     margin-bottom: 20px;
 }
@@ -227,7 +227,7 @@ body {
 }
 
 .timing-title {
-    font-family: 'Alex Brush', cursive;
+    font-family: 'Georgia', cursive;
     font-size: 24px;
     margin-bottom: 40px;
 }
