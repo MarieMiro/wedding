@@ -20,18 +20,41 @@ body {
 }
 
 .subtitle {
-    font-size: 14px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 60px;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    position: relative;
+}
+
+.subtitle::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: #f8a8b8;
+    margin: 15px auto 0;
 }
 
 .names {
-    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    line-height: 1.2;
 }
 
 .names span {
-    color: #e89cae;
-    font-style: italic;
+    font-family: 'Dancing Script', cursive;
+    color: #f8a8b8;
+    font-size: 32px;
+    margin: 10px 0;
+    font-weight: 400;
 }
 
 .invite-button {
@@ -49,23 +72,53 @@ body {
     background-color: #f47c95;
 }
 
-.flowers {
+/* Анимация множества цветов */
+.flowers-container {
     position: absolute;
     bottom: 0;
     width: 100%;
-    animation: sway 5s ease-in-out infinite alternate;
+    height: 150px;
+    overflow: hidden;
 }
 
-.flowers img {
-    width: 100%;
-    max-height: 150px;
-    object-fit: contain;
+.flower {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url('images/flowers.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: flowerFall 10s linear infinite;
 }
 
-@keyframes sway {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(5px) rotate(1deg); }
-    100% { transform: translateY(0) rotate(-1deg); }
+/* Разные задержки для цветов */
+.flower:nth-child(1) { left: 5%; animation-delay: 0s; }
+.flower:nth-child(2) { left: 15%; animation-delay: 2s; }
+.flower:nth-child(3) { left: 25%; animation-delay: 4s; }
+.flower:nth-child(4) { left: 35%; animation-delay: 1s; }
+.flower:nth-child(5) { left: 45%; animation-delay: 3s; }
+.flower:nth-child(6) { left: 55%; animation-delay: 5s; }
+.flower:nth-child(7) { left: 65%; animation-delay: 2s; }
+.flower:nth-child(8) { left: 75%; animation-delay: 4s; }
+.flower:nth-child(9) { left: 85%; animation-delay: 1s; }
+.flower:nth-child(10) { left: 95%; animation-delay: 3s; }
+
+@keyframes flowerFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(150px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Основной контент */
