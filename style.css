@@ -106,9 +106,13 @@ body {
 
 /* Третья секция (место проведения) */
 .location-info {
-    background-color: #fbe6eb;
+    background-color: #fbe6eb; /* Нежно-розовый */
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    padding: 40px 20px;
+    margin: 40px 20px;
 }
 
 .place-title {
