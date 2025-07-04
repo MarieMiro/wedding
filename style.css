@@ -8,13 +8,14 @@ body {
 .page-1 {
     min-height: 100vh; /* чтобы точно занимал весь экран */
     height: 100vh;
+    padding-top: 15vh;
 }
 
 .subtitle {
     font-family: 'Dancing Script';
     font-size: 18px; /* сделала чуть меньше */
     color: #333;
-    margin-top: 25\px;
+    margin-top: 25px;
     margin-left: 20px;
     margin-right: 20px;
     letter-spacing: 2px;
@@ -135,6 +136,7 @@ body {
 }
 
 .text {
+    font-family: 'Playfair Display', serif;
     font-size: 16px;
     margin-bottom: 20px;
 }
@@ -146,6 +148,7 @@ body {
 }
 
 .signature {
+    font-family: 'Playfair Display', serif;
     font-size: 20px;
     color: #e89cae;
     font-family: 'Cursive', sans-serif;
