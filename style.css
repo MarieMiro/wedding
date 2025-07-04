@@ -150,14 +150,13 @@ body {
 }
 
 .date {
-    font-family: 'Playfair Display', cursive;
+    font-family: 'Alex Brush', cursive;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .signature {
-    font-family: 'Playfair Display', serif;
     font-size: 25px;
     color: #e89cae;
     font-family: 'Cursive', sans-serif;
