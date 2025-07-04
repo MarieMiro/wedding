@@ -46,15 +46,18 @@ body {
 }
 
 .invite-button {
-       display: flex;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    z-index: 2; /* чтобы не перекрыли цветы */
+    background-color: #f8a8b8;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .invite-button:hover {
-    transform: scale(1.05);
+    background-color: #f47c95;
 }
 
 /* Анимация 5 цветов внизу экрана */
