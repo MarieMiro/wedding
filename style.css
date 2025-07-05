@@ -266,7 +266,7 @@ body {
     animation: sway 3s ease-in-out infinite alternate;
 }
 
-.flower-left {
+.flower-left {  
     top: 30%;
     left: -20px;
 }
@@ -287,7 +287,7 @@ body {
 /* 5-й БЛОК */
 
 .dress-code {
-    background-color: #fff;
+    background-color: #e6f7f9;
     padding: 60px 20px;
     text-align: center;
 }
