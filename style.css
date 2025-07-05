@@ -402,3 +402,57 @@ body {
     line-height: 1.5;
 }
 
+/* 9-й БЛОК */
+
+.contacts {
+    background-color: #e6f7f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contacts-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.contacts-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.organizer {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-button {
+    background-color: #f78ab0;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.countdown-section {
+    margin-top: 50px;
+}
+
+.countdown-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #f78ab0;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
