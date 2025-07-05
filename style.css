@@ -359,12 +359,14 @@ body {
 
 .slides {
     display: flex;
+    width: 300%; /* важно! ширина = 100% * количество картинок */
     transition: transform 0.5s ease;
 }
 
 .slides img {
     width: 100%;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .prev, .next {
@@ -377,6 +379,7 @@ body {
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
+    z-index: 10;
 }
 
 .prev { left: 10px; }
