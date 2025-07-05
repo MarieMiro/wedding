@@ -220,7 +220,19 @@
     </div>
 </section>
 </section>
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
 
+document.querySelectorAll('.scroll-reveal').forEach(section => {
+    observer.observe(section);
+});
+</script>
     <script>
         function openInvite() {
             document.querySelector('.page-1').classList.remove('active');
