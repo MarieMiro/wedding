@@ -453,6 +453,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
 }
