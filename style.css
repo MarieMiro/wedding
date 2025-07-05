@@ -220,12 +220,11 @@ body {
 }
 /* Четвёртая секция — Тайминг */
 .timing {
+    position: relative; /* Чтобы цветы позиционировались относительно блока */
     background-color: #e6f7f9;
     padding: 60px 20px;
-    position: relative;
     overflow: hidden;
 }
-
 .timing-title {
     font-family: 'Georgia', cursive;
     font-size: 24px;
@@ -259,21 +258,28 @@ body {
     background-color: #f8a8b8; /* нежно-розовая линия */
     margin: 0 auto 20px auto;
 }
-
 /* Цветы по бокам */
 .flower {
     position: absolute;
-    width: 100px;
-    opacity: 0.7;
-    top: 30%;
+    width: 80px;
+    opacity: 0.9;
+    animation: sway 3s ease-in-out infinite alternate;
 }
 
 .flower-left {
-    left: -30px;
-    transform: rotate(-15deg);
+    top: 30%;
+    left: -20px;
 }
 
 .flower-right {
-    right: -30px;
-    transform: rotate(15deg) scaleX(-1);
+    top: 30%;
+    right: -20px;
+    transform: scaleX(-1);
+}
+
+/* Анимация "покачивания" */
+@keyframes sway {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(4deg); }
+    100% { transform: rotate(-4deg); }
 }
