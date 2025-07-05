@@ -1,4 +1,4 @@
-/* Общие стили */
+    /* Общие стили */
 body {
     margin: 0;
     font-family: Georgia, sans-serif;
@@ -359,14 +359,13 @@ body {
 
 .slides {
     display: flex;
-    width: 400%; /* важно! ширина = 100% * количество картинок */
     transition: transform 0.5s ease;
 }
 
 .slides img {
     width: 100%;
-    border-radius: 10px;
     flex-shrink: 0;
+    border-radius: 10px;
 }
 
 .prev, .next {
