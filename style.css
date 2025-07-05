@@ -359,7 +359,7 @@ body {
 
 .slides {
     display: flex;
-    width: 300%; /* важно! ширина = 100% * количество картинок */
+    width: 400%; /* важно! ширина = 100% * количество картинок */
     transition: transform 0.5s ease;
 }
 
