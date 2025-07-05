@@ -383,3 +383,22 @@ body {
 
 .prev { left: 10px; }
 .next { right: 10px; }
+
+/* 8-й БЛОК */
+.wishes {
+    background-color: #e6f7f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.wishes-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.wishes-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
