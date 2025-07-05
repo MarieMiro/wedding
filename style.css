@@ -329,3 +329,55 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* 6-й БЛОК */
+
+.outfits {
+    background-color: #e6f7f9;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.outfits-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.outfits-text {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
