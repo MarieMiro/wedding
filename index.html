@@ -163,15 +163,17 @@
     document.querySelectorAll('.scroll-reveal').forEach(section => observer.observe(section));
 
     function openInvite() {
-        
-        document.querySelector('.page-1').classList.remove('active');
+    document.querySelector('.page-1').classList.remove('active');
     document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
 
-    // Включение музыки:
+    // Включение музыки
     const music = document.getElementById('weddingMusic');
-    music.play().catch(err => {
-        console.log("Ошибка воспроизведения музыки:", err);
+    if (music) {
+        music.play().catch(err => {
+            console.log("Ошибка воспроизведения музыки:", err);
+        });
     }
+}
 
     const indices = { girls: 0, men: 0 };
 
