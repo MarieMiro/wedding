@@ -163,8 +163,14 @@
     document.querySelectorAll('.scroll-reveal').forEach(section => observer.observe(section));
 
     function openInvite() {
+        
         document.querySelector('.page-1').classList.remove('active');
-        document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+
+    // Включение музыки:
+    const music = document.getElementById('weddingMusic');
+    music.play().catch(err => {
+        console.log("Ошибка воспроизведения музыки:", err);
     }
 
     const indices = { girls: 0, men: 0 };
@@ -205,5 +211,6 @@
         document.getElementById('seconds').innerText = Math.floor((distance / 1000) % 60);
     }, 1000);
     </script>
+    <audio id="weddingMusic" src="audio/wedding.mp3"></audio>
 </body>
 </html>
