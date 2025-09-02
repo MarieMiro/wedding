@@ -193,7 +193,7 @@ function showSlide(group){
   const total = slides.children.length;
   indices[group] = (indices[group] + total) % total;
   const offset = -indices[group] * 100;
-  slides.style.transform = translateX(${offset}%);
+  slides.style.transform = `translateX(${offset}%)`;
 }
 function prevSlide(group){
   const slides = document.querySelector(`.slides-${group}`);
