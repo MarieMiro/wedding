@@ -4,11 +4,7 @@ body {
     font-family: Georgia, sans-serif;
     background-color: #e6f7f9;
 }
-.page-1 { display: block; }
-.page-1.hidden { display: none; }
 
-.main-content { display: none; }
-.main-content.active { display: block; }
 
 
 .page-1 {
