@@ -5,6 +5,12 @@ body {
     background-color: #e6f7f9;
 }
 
+/* экраны */
+.page-1 { display:block; }
+.page-1.hidden { display:none; }
+.main-content { display:none; }
+.main-content.active { display:block; }
+
 
 
 .page-1 {
