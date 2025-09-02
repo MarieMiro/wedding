@@ -20,6 +20,7 @@
         <!--основное-->
         <div class="invite-wrapper">
             <button class="invite-button" onclick="openInvite()">Открыть приглашение</button>
+            <button id="soundToggle" class="sound-btn" aria-pressed="false">🔈 Включить звук</button>
         </div>
         <div class="flowers-bottom">
             <div class="flower"></div>
@@ -154,9 +155,18 @@
     <script>
 /* Появление секций при скролле */
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.5 });
-document.querySelectorAll('.scroll-reveal').forEach(s => observer.observe(s));
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(section => observer.observe(section));
+
+    function openInvite() {
+    document.querySelector('.page-1').classList.remove('active');
+    document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
 
 /* Музыка */
 const music = document.getElementById('weddingMusic');
