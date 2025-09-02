@@ -153,67 +153,76 @@
 
     <!-- Скрипты -->
    <script>
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.5 });
+/* Анимация появления секций */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+},{ threshold: 0.5 });
+document.querySelectorAll('.scroll-reveal').forEach(s => observer.observe(s));
 
-    document.querySelectorAll('.scroll-reveal').forEach(section => observer.observe(section));
-
-    function openInvite() {
-    document.querySelector('.page-1').classList.remove('active');
-    document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
-
-    // Включение музыки
-    const music = document.getElementById('weddingMusic');
-    if (music) {
-        music.play().catch(err => {
-            console.log("Ошибка воспроизведения музыки:", err);
-        });
-    }
+/* Музыка */
+const music = document.getElementById('weddingMusic');
+if (music) { music.preload='auto'; music.loop=true; music.volume=0; }
+function fadeInAudio(target=0.6, step=0.05, every=120){
+  if (!music) return;
+  const t=setInterval(()=>{
+    const next=Math.min(target, music.volume+step);
+    music.volume=next;
+    if (next>=target) clearInterval(t);
+  }, every);
 }
 
-    const indices = { girls: 0, men: 0 };
+/* Открыть приглашение — ПРЯЧЕМ .page-1 и ВКЛ. .main-content */
+function openInvite(){
+  const first=document.querySelector('.page-1');
+  const main =document.querySelector('.main-content');
+  if (first) first.classList.add('hidden');
+  if (main)  { main.classList.add('active'); main.scrollIntoView({behavior:'smooth'}); }
 
-    function showSlide(group) {
-        const slides = document.querySelector(.slides-${group});
-        const total = slides.children.length;
-        const offset = -indices[group] * 100;
-        slides.style.transform = translateX(${offset}%);
-    }
+  if (!music) return;
+  music.play().then(()=>fadeInAudio()).catch(err=>{
+    console.log('Ошибка воспроизведения музыки:', err);
+  });
+}
 
-    function prevSlide(group) {
-        const slides = document.querySelector(.slides-${group});
-        const total = slides.children.length;
-        indices[group] = (indices[group] - 1 + total) % total;
-        showSlide(group);
-    }
+/* Слайдер (исправлены шаблонные строки) */
+const indices = { girls:0, men:0 };
 
-    function nextSlide(group) {
-        const slides = document.querySelector(.slides-${group});
-        const total = slides.children.length;
-        indices[group] = (indices[group] + 1) % total;
-        showSlide(group);
-    }
+function showSlide(group){
+  const slides = document.querySelector(`.slides-${group}`);
+  if (!slides) return;
+  const total = slides.children.length;
+  indices[group] = (indices[group] + total) % total;
+  const offset = -indices[group] * 100;
+  slides.style.transform = translateX(${offset}%);
+}
+function prevSlide(group){
+  const slides = document.querySelector(`.slides-${group}`);
+  if (!slides) return;
+  const total = slides.children.length;
+  indices[group] = (indices[group]-1+total)%total;
+  showSlide(group);
+}
+function nextSlide(group){
+  const slides = document.querySelector(`.slides-${group}`);
+  if (!slides) return;
+  const total = slides.children.length;
+  indices[group] = (indices[group]+1)%total;
+  showSlide(group);
+}
+showSlide('girls');
+showSlide('men');
 
-    showSlide('girls');
-    showSlide('men');
-
-    // Таймер
-    const targetDate = new Date('2025-08-01T00:00:00').getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        if (distance < 0) return;
-        document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((distance / (1000 * 60 * 60)) % 24);
-        document.getElementById('minutes').innerText = Math.floor((distance / (1000 * 60)) % 60);
-        document.getElementById('seconds').innerText = Math.floor((distance / 1000) % 60);
-    }, 1000);
-    </script>
-    <audio id="weddingMusic" src="audio/wedding.mp3"></audio>
+/* Таймер */
+const targetDate = new Date('2025-08-01T00:00:00').getTime();
+setInterval(()=>{
+  const now = Date.now();
+  const d = targetDate - now;
+  if (d<0) return;
+  document.getElementById('days').innerText    = Math.floor(d/86400000);
+  document.getElementById('hours').innerText   = Math.floor((d/3600000)%24);
+  document.getElementById('minutes').innerText = Math.floor((d/60000)%60);
+  document.getElementById('seconds').innerText = Math.floor((d/1000)%60);
+},1000);
+</script>
 </body>
 </html>
