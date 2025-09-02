@@ -152,127 +152,116 @@
     </div>
 
     <!-- Скрипты -->
-    <script>
-/* Появление секций при скролле */
-const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.5 });
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* Появление секций при скролле */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.scroll-reveal').forEach(s => observer.observe(s));
 
-    document.querySelectorAll('.scroll-reveal').forEach(section => observer.observe(section));
+  /* Аудио */
+  const music = document.getElementById('weddingMusic');
+  if (music) {
+    music.preload = 'auto';
+    music.loop = true;
+    music.volume = 0;
+  }
+  function fadeInAudio(targetVol = 0.6, step = 0.05, interval = 120) {
+    if (!music) return;
+    const tick = setInterval(() => {
+      const next = Math.min(targetVol, music.volume + step);
+      music.volume = next;
+      if (next >= targetVol) clearInterval(tick);
+    }, interval);
+  }
 
-    function openInvite() {
-    document.querySelector('.page-1').classList.remove('active');
-    document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+  /* Глобальная функция для кнопки "Открыть приглашение" */
+  window.openInvite = async function openInvite() {
+    const first = document.querySelector('.page-1');
+    const main  = document.querySelector('.main-content');
+    if (first) first.classList.add('hidden');          // спрятать первый экран
+    if (main)  { main.classList.add('active'); main.scrollIntoView({ behavior: 'smooth' }); } // показать основной
 
-/* Музыка */
-const music = document.getElementById('weddingMusic');
-if (music) {
-  music.preload = 'auto';
-  music.loop = true;
-  music.volume = 0; // начнем с нулевой громкости для плавного фейда
-}
-
-function fadeInAudio(targetVol = 0.6, step = 0.05, interval = 120) {
-  if (!music) return;
-  const tick = setInterval(() => {
-    if (music.volume + step >= targetVol) {
-      music.volume = targetVol;
-      clearInterval(tick);
-    } else {
-      music.volume = Math.min(1, music.volume + step);
-    }
-  }, interval);
-}
-
-/* Открыть приглашение */
-function openInvite() {
-  document.querySelector('.page-1')?.classList.remove('active');
-  document.querySelector('.main-content')?.scrollIntoView({ behavior: 'smooth' });
-
-  if (!music) return;
-  music.play()
-    .then(() => fadeInAudio())
-    .catch(err => {
-      // Если вдруг не разрешили — попросим включить вручную
-      console.log('Ошибка воспроизведения музыки:', err);
-      const btn = document.getElementById('soundToggle');
-      if (btn) btn.textContent = '🔇 Нажмите, чтобы включить звук';
-    });
-}
-
-/* Кнопка вкл/выкл звука */
-const soundBtn = document.getElementById('soundToggle');
-if (soundBtn && music) {
-  soundBtn.addEventListener('click', async () => {
-    try {
-      if (music.paused) {
+    if (music) {
+      try { 
         music.volume = 0;
         await music.play();
         fadeInAudio();
-        soundBtn.textContent = '🔊 Выключить звук';
-        soundBtn.setAttribute('aria-pressed', 'true');
-      } else {
-        music.pause();
-        soundBtn.textContent = '🔈 Включить звук';
-        soundBtn.setAttribute('aria-pressed', 'false');
+      } catch (err) {
+        console.log('Ошибка воспроизведения музыки:', err);
       }
-    } catch (e) {
-      console.log('Не удалось воспроизвести аудио:', e);
     }
-  });
-}
+  };
 
-/* Слайдер — ИСПРАВЛЕНЫ шаблонные строки и transform */
-const indices = { girls: 0, men: 0 };
+  /* Кнопка вкл/выкл звука (необязательно) */
+  const soundBtn = document.getElementById('soundToggle');
+  if (soundBtn && music) {
+    soundBtn.addEventListener('click', async () => {
+      try {
+        if (music.paused) {
+          music.volume = 0;
+          await music.play();
+          fadeInAudio();
+          soundBtn.textContent = '🔊 Выключить звук';
+          soundBtn.setAttribute('aria-pressed', 'true');
+        } else {
+          music.pause();
+          soundBtn.textContent = '🔈 Включить звук';
+          soundBtn.setAttribute('aria-pressed', 'false');
+        }
+      } catch (e) {
+        console.log('Не удалось воспроизвести аудио:', e);
+      }
+    });
+  }
 
-function showSlide(group) {
-  const slides = document.querySelector(`.slides-${group}`);
-  if (!slides) return;
-  const total = slides.children.length;
-  indices[group] = (indices[group] + total) % total; // страховка
-  const offset = -indices[group] * 100;
-  slides.style.transform = translateX(${offset}%);
-}
+  /* Слайдер */
+  const indices = { girls: 0, men: 0 };
 
-function prevSlide(group) {
-  const slides = document.querySelector(`.slides-${group}`);
-  if (!slides) return;
-  const total = slides.children.length;
-  indices[group] = (indices[group] - 1 + total) % total;
-  showSlide(group);
-}
+  function showSlide(group) {
+    const slides = document.querySelector(`.slides-${group}`);
+    if (!slides) return;
+    const total = slides.children.length;
+    indices[group] = (indices[group] + total) % total;
+    const offset = -indices[group] * 100;
+    slides.style.transform = translateX(${offset}%);
+  }
+  window.prevSlide = function(group) {
+    const slides = document.querySelector(`.slides-${group}`);
+    if (!slides) return;
+    const total = slides.children.length;
+    indices[group] = (indices[group] - 1 + total) % total;
+    showSlide(group);
+  };
+  window.nextSlide = function(group) {
+    const slides = document.querySelector(`.slides-${group}`);
+    if (!slides) return;
+    const total = slides.children.length;
+    indices[group] = (indices[group] + 1) % total;
+    showSlide(group);
+  };
 
-function nextSlide(group) {
-  const slides = document.querySelector(`.slides-${group}`);
-  if (!slides) return;
-  const total = slides.children.length;
-  indices[group] = (indices[group] + 1) % total;
-  showSlide(group);
-}
+  showSlide('girls');
+  showSlide('men');
 
-showSlide('girls');
-showSlide('men');
-
-/* Таймер */
-const targetDate = new Date('2025-08-01T00:00:00').getTime();
-setInterval(() => {
-  const now = Date.now();
-  const d = targetDate - now;
-  if (d < 0) return;
-  document.getElementById('days').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-  document.getElementById('hours').innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
-  document.getElementById('minutes').innerText = Math.floor((d / (1000 * 60)) % 60);
-  document.getElementById('seconds').innerText = Math.floor((d / 1000) % 60);
-}, 1000);
+  /* Таймер */
+  const targetDate = new Date('2025-08-01T00:00:00').getTime();
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  setInterval(() => {
+    const now = Date.now();
+    const d = targetDate - now;
+    if (d < 0) return;
+    if (daysEl)    daysEl.textContent    = Math.floor(d / (1000 * 60 * 60 * 24));
+    if (hoursEl)   hoursEl.textContent   = Math.floor((d / (1000 * 60 * 60)) % 24);
+    if (minutesEl) minutesEl.textContent = Math.floor((d / (1000 * 60)) % 60);
+    if (secondsEl) secondsEl.textContent = Math.floor((d / 1000) % 60);
+  }, 1000);
+});
 </script>
-
-<!-- АУДИО (держи внизу body, путь поменяй на свой файл) -->
-<audio id="weddingMusic" src="audio/wedding.mp3"></audio>
-
 
 </body>
 </html>
